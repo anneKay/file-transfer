@@ -9,15 +9,26 @@
   </p>
   <% @post.images.each do |image| %>
     <% if image.variable? %>
-      <%= link_to image_tag(image.variant(resize: "400x400")), image %>
+      <div class="card images" style="display: inline-block; margin: 0 25px 25px 0;">
+        <%= link_to image_tag(image.variant(resize: "400x400")), image %>
+        <div class="card-body">
+          <button class="btn btn-warning"><%= link_to 'download', rails_blob_path(image, disposition: :attachment)%></button>
+        </div>
+      </div>
     <% elsif image.previewable? %>
-      <%= link_to image_tag (image.preview(resize: "400x400")), rails_blob_path(image, disposition: :attachement) %>
+      <div class="card images" style="display: inline-block; margin-right: 25px;">
+         <%= link_to image_tag(image.preview(resize: "400x400")), rails_blob_path(image, disposition: :attachment) %>
+          <div class="card-body">
+            <button class="btn btn-warning" style="color: white;"><%= link_to 'download', rails_blob_path(image, disposition: :attachment)%></button>
+          </div>
+        </div>
     <% else %>
-      <%= link_to image.filename, rails_blob_path(image, disposition: :attachement)%>
+      <%= link_to image.filename, rails_blob_path(image, disposition: :attachment)%>
     <% end %>  
   <% end %>
-
-  <h2><%= link_to 'Edit', edit_post_path(@post) %></h2>
-  <h2><%= link_to 'Back', posts_path %><h2>
+<div id='wrap-button'>
+  <button class="btn btn-success btn-lg"><%= link_to 'Edit', edit_post_path(@post) %></button>
+  <button class="btn btn-success btn-lg"><%= link_to 'Back', posts_path %></button>
+</div>
 <% end %>
 </div>
