@@ -1,0 +1,40 @@
+<div id="body-div-wrapper">
+<% if user_signed_in? %>
+<p id="notice"><%= notice %></p>
+
+<div id="file-wrapper">
+<h1>Recent Files</h1>
+  <div class="row">
+   <% @posts.each do |post| %>
+    <div class="col-sm-2">
+    <div id="card-shadow" class="card" style="width: 22rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= post.name %></h5>
+          <a href="#" class="card-link"><%= link_to 'Show', post %></a>
+          <a href="#" class="card-link"><%= link_to 'Edit', edit_post_path(post) %></a>
+          <a href="#" class="card-link"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+        </div>
+      </div>
+      </div>
+  <% end %>
+</div>
+<div id='create-div'>
+  <%= link_to render('create_button'), new_post_path %>
+</div>
+</div>
+<br>
+</div>
+<% else %>
+<div id="landing-page">
+<header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Organize your files</div>
+          <div class="intro-lead-in">with file transfer</div>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="users/sign_up">Get Started</a>
+        </div>
+      </div>
+    </header>
+</div>
+<% end %>
+</div>
