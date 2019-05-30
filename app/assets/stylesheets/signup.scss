@@ -18,17 +18,18 @@
       margin-top: 5px;
       input {
         width: 180px;
+        font-size: 14px;
         height: 35px;
       }
       .actions {
         margin-top: 15px;
         input {
           border : solid 0px #000000;
-          height: 30px;
+          height: 40px;
 	        border-radius : 5px;
-          font-size : 14px;
+          font-size : 15px;
           color : #ffffff;
-          background: rgb(88,88,88);
+          background: #499660;
           padding : 5px 17px;
         }
       }
